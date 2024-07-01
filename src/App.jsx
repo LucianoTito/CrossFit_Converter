@@ -7,6 +7,7 @@ import WeightPercentageCalculator from './components/WeightPercentageCalculator'
 function App() {
   return (
     <>
+    <div className='App'>
      <div className="card">
         <WeightPercentageCalculator />
       </div>
@@ -17,7 +18,8 @@ function App() {
         <ConversorCard />
       </div>
    
-     
+     <footer>Creado por Luciano Tito</footer>
+     </div>
     </>
   );
 }
