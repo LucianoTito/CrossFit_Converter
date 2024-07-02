@@ -66,7 +66,7 @@ const ConversorCard = () => {
         </select>
       </div>
 
-      <button onClick={handleConvert}>Convertir</button>
+      <button className='converter_btn' onClick={handleConvert}>Convertir</button>
 
       {result !== null && (
         <div className="result">

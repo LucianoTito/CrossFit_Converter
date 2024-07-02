@@ -35,19 +35,20 @@
   border-radius: 4px;
 }
 
-button {
+.converter_btn {
   width: 75%;
   padding: 10px;
   font-size: 16px;
-  color: #333;
+  color: #1a1a1a;
   background-color: #d0ff00;
   border: 1px solid #eef0f1;
   border-radius: 4px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #d0ff00;
+.converter_btn:hover {
+  background-color: #eef0f1;
+  font-size:large;
 }
 
 .result {
