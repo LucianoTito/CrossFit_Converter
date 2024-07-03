@@ -38,17 +38,14 @@ footer {
   width: 100%;
   text-align:center;
   font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .read-the-docs {
   color: #888;
 }
-
-.linkedin_ico_conteiner{
-display: inline-block;
-position: absolute;  
-}
-
 
 /* Estilos para el ícono de LinkedIn */
 .icon {
@@ -61,6 +58,23 @@ position: absolute;
 
 .icon:hover {
   color: #0073b1; /* Color cuando se pasa el ratón */
+  transform: scale(1.4); /* Aumenta el tamaño del ícono */
+  box-shadow: 0 0 8px #0073b1; /* Añade un efecto de brillo */
+}
+
+/* Estilos para el botón de desplazamiento hacia arriba */
+.scroll-to-top {
+  display: inline-flex;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.7em; /* Ajusta el tamaño del ícono */
+  color: #d0ff00; /* Color del ícono */
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transición suave */
+}
+
+.scroll-to-top:hover {
+  color:  #b3a3a3; /* Color cuando se pasa el ratón */
   transform: scale(1.2); /* Aumenta el tamaño del ícono */
-  box-shadow: 0 0 8px #0073b1; /* Añade un efecto de brillo */  
+  box-shadow: 0 0 8px #d0ff00; /* Añade un efecto de brillo */
 }
