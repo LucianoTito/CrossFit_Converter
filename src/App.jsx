@@ -20,7 +20,7 @@ function App() {
         </div>
         <footer>
           Creado por Luciano Tito 
-          <a href="https://www.linkedin.com/in/tu-usuario-linkedin" target="_blank" rel="noopener noreferrer" >
+          <a href="https://www.linkedin.com/in/luciano-facundo-tito-cedr%C3%B3n/" target="_blank" rel="noopener noreferrer" >
 
           <div className='linkedin_ico_conteiner'>
           <FaLinkedin className="icon" />

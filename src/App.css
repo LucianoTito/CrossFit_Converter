@@ -62,5 +62,5 @@ position: absolute;
 .icon:hover {
   color: #0073b1; /* Color cuando se pasa el ratón */
   transform: scale(1.2); /* Aumenta el tamaño del ícono */
-  box-shadow: 0 0 8px #0073b1; /* Añade un efecto de brillo */
+  box-shadow: 0 0 8px #0073b1; /* Añade un efecto de brillo */  
 }
