@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './WeightPercentageCalculator.css'; // Archivo CSS para los estilos
+import '../styles/WeightPercentageCalculator.css'; // Archivo CSS para los estilos
 
 const WeightPercentageCalculator = () => {
   const [weight, setWeight] = useState('');

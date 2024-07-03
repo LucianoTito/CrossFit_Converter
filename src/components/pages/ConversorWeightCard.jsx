@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { convertWeight } from './conversion/conversionWeight';
-import './ConversorWeightCard.css'; // Importa el archivo CSS
+import { convertWeight } from '../logic_conversion/conversionWeight';
+import '../styles/ConversorWeightCard.css'; // Importa el archivo CSS
 
 const ConversorWeightCard = () => {
   const [inputValue, setInputValue] = useState('');

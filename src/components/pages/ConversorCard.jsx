@@ -1,7 +1,7 @@
 // src/components/ConversorCard.jsx
 import  { useState } from 'react';
-import { convertCalories, convertMeters } from './conversion/conversion';
-import './ConversorCard.css';
+import { convertCalories, convertMeters } from '../logic_conversion/conversion';
+import '../styles/ConversorCard.css';
 
 const ConversorCard = () => {
   const [inputValue, setInputValue] = useState('');
