@@ -1,11 +1,12 @@
 /* src/App.css */
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 #root {
   display: flex;
   flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  font-family: "Roboto Mono", monospace;
   text-align: center;
   background: url('./assets/images/IMG_20230315_000422.jpg') no-repeat center center fixed;
   background-size: cover;

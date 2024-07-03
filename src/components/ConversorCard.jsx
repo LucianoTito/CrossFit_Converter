@@ -22,7 +22,7 @@ const ConversorCard = () => {
 
   return (
     <div className="conversor-card">
-      <h2>Conversor de Calorías y Metros</h2>
+      <h2>CONVERSOR DE CALORÍAS Y METROS</h2>
 
       <div className="input-group">
         <label>Género:</label>

@@ -31,7 +31,7 @@ const ConversorWeightCard = () => {
 
   return (
     <div className="conversor-weight-card">
-      <h2>Convertidor de peso</h2>
+      <h2>CONVERTIDOR DE PESO</h2>
       <div className="conversion-options">
         <label>
           <input

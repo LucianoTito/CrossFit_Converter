@@ -27,7 +27,7 @@ const WeightPercentageCalculator = () => {
 
   return (
     <div className="card-3">
-      <h2>Calculadora de porcentaje de peso</h2>
+      <h2>CALCULADORA DE PORCENTAJE DE PESO</h2>
       <div className="input-group">
         <label htmlFor="weightInput">Peso (kg o lb):</label>
         <input
