@@ -27,25 +27,25 @@ const WeightPercentageCalculator = () => {
 
   return (
     <div className="card-3">
-      <h2>Weight Percentage Calculator</h2>
+      <h2>Calculadora de porcentaje de peso</h2>
       <div className="input-group">
-        <label htmlFor="weightInput">Weight (kg or lb):</label>
+        <label htmlFor="weightInput">Peso (kg o lb):</label>
         <input
           type="text"
           id="weightInput"
           value={weight}
           onChange={handleWeightChange}
-          placeholder="Enter weight"
+          placeholder="Ingrese el peso"
         />
       </div>
       <div className="input-group">
-        <label htmlFor="percentageInput">Percentage (%):</label>
+        <label htmlFor="percentageInput">Porcentaje (%):</label>
         <input
           type="text"
           id="percentageInput"
           value={percentage}
           onChange={handlePercentageChange}
-          placeholder="Enter percentage"
+          placeholder="Ingrese el porcentaje"
         />
       </div>
       {result && (

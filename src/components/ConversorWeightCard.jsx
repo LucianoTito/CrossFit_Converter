@@ -31,7 +31,7 @@ const ConversorWeightCard = () => {
 
   return (
     <div className="conversor-weight-card">
-      <h2>Weight Converter</h2>
+      <h2>Convertidor de peso</h2>
       <div className="conversion-options">
         <label>
           <input
@@ -40,7 +40,7 @@ const ConversorWeightCard = () => {
             checked={conversionType === 'lbsToKg'}
             onChange={handleConversionChange}
           />
-          lbs to kg
+          libras a kilos
         </label>
         <label>
           <input
@@ -49,7 +49,7 @@ const ConversorWeightCard = () => {
             checked={conversionType === 'kgToLbs'}
             onChange={handleConversionChange}
           />
-          kg to lbs
+          kilos a libras
         </label>
       </div>
       <div className="input-section">
@@ -57,7 +57,7 @@ const ConversorWeightCard = () => {
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          placeholder="Enter value"
+          placeholder="Ingrese el peso"
         />  
       </div>
       <div className="result-section">

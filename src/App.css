@@ -43,3 +43,24 @@ footer {
 .read-the-docs {
   color: #888;
 }
+
+.linkedin_ico_conteiner{
+display: inline-block;
+position: absolute;  
+}
+
+
+/* Estilos para el ícono de LinkedIn */
+.icon {
+  font-size: 1.35em; /* Tamaño del ícono */
+  color: #d0ff00; /* Color del ícono */
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transición suave para el color, el tamaño y la sombra */
+  margin-left: 5px;
+  margin-top: 1px;
+}
+
+.icon:hover {
+  color: #0073b1; /* Color cuando se pasa el ratón */
+  transform: scale(1.2); /* Aumenta el tamaño del ícono */
+  box-shadow: 0 0 8px #0073b1; /* Añade un efecto de brillo */
+}
