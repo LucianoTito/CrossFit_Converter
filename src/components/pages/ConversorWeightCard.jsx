@@ -55,7 +55,7 @@ const ConversorWeightCard = () => {
      
         <input
         className='input-weight-value'
-          type="text"
+          type="number"
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Ingrese el peso"
