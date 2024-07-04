@@ -52,8 +52,10 @@ const ConversorWeightCard = () => {
           kilos a libras
         </label>
       
-     
-        <input
+      </div>
+
+      <div className="input-group">
+      <input
         className='input-weight-value'
           type="number"
           value={inputValue}

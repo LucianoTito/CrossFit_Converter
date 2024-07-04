@@ -7,7 +7,7 @@
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #d0ff00;
+    border: 1px solid #e0fd53;
     border-radius: 8px;
     background-color: #1a1a1a;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -15,7 +15,7 @@
   
   .conversor-weight-card .conversor-weight-title {
     margin-bottom: 20px;
-    color: #d0ff00;
+    color: #e0fd53;
   }
   
   .conversion-weight-options {
@@ -55,6 +55,6 @@
   .result-weight {
     font-size: 1.5em ; 
     font-weight: bold; /* Añade negrita al resultado */
-    color:  #d0ff00; 
+    color:  #e0fd53; 
   }
   

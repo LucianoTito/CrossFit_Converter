@@ -4,7 +4,7 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #d0ff00;
+  border: 1px solid #e0fd53;
   border-radius: 8px;
   background-color: #1a1a1a;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -13,7 +13,7 @@
 .conversor-card h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #d0ff00;
+  color: #e0fd53;
 }
 
 .input-group {
@@ -45,7 +45,7 @@
   font-size: 18px;
   font-weight:bolder;
   color: #1a1a1a;
-  background-color: #d0ff00;
+  background-color: #e0fd53;
   border: 1px solid #eef0f1;
   border-radius: 4px;
   cursor: pointer;
@@ -57,7 +57,7 @@
   font-size:large;
   transform: scale(1.1);
   border: none;
-  box-shadow: 1px 3px 9px #d0ff00; 
+  box-shadow: 1px 3px 9px #e0fd53; 
 }
 
 .result-cals-container .result-cals-container-title {
@@ -68,7 +68,7 @@
 .result-cals-container .cals-result-value {
   font-size: 1.4em;
   font-weight: bolder;
-  color: #d0ff00;
+  color: #e0fd53;
   margin-bottom: 0;
  margin-top: 0;
 }
