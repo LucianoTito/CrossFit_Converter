@@ -1,6 +1,9 @@
 /* src/components/ConversorWeightCard.css */
 
 .conversor-weight-card {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -10,50 +13,48 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .conversor-weight-card h2 {
-    text-align: center;
+  .conversor-weight-card .conversor-weight-title {
     margin-bottom: 20px;
     color: #d0ff00;
   }
   
-  .conversion-options {
+  .conversion-weight-options {
     margin-bottom: 15px;
   }
   
-  .conversion-options label {
+  .conversion-weight-options .conversion-weight-label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
   }
   
-  .input-section {
+
+  
+ .input-weight-value {
+  width: 70%;
+  padding: 8px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  
+  }
+  
+  .result-weight-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
+    margin-top: 0.5em;
   }
   
-  .input-section input {
-    flex: 1;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .result-section {
-    text-align: center; /* Centra el contenido */
-  }
-  
-  .result-label {
-    font-size: 18px;
+  .result-weight-label {
+    font-size: 1.4em;
     font-weight: bold;
-    margin-right: 5px;
   }
   
-  .result {
-    font-size: 24px; /* Aumenta el tamaño del resultado */
+  .result-weight {
+    font-size: 1.5em ; 
     font-weight: bold; /* Añade negrita al resultado */
-    color:  #d0ff00; /* Color azul */
+    color:  #d0ff00; 
   }
   

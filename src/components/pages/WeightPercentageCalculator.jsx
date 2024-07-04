@@ -26,8 +26,8 @@ const WeightPercentageCalculator = () => {
   };
 
   return (
-    <div className="card-3">
-      <h2>CALCULADORA DE PORCENTAJE DE PESO</h2>
+    <div className="weight-percentage-card">
+      <h2 className='weight-percentage-card-title'>CALCULADORA DE PORCENTAJE DE PESO</h2>
       <div className="input-group">
         <label htmlFor="weightInput">Peso (kg o lb):</label>
         <input
@@ -49,9 +49,9 @@ const WeightPercentageCalculator = () => {
         />
       </div>
       {result && (
-        <div className="result">
-          <h3>Result:</h3>
-          <p>{result} kg</p>
+        <div className="result-percentage">
+          <h3  className='result-percentage-title'>Resultado:</h3>
+          <p className='result-percentage-value'>{result} kg</p>
         </div>
       )}
     </div>

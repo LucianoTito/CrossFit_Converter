@@ -3,8 +3,8 @@
 #root {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 1280px;
-  margin: 0 auto;
   padding: 2rem;
   font-family: "Roboto Mono", monospace;
   text-align: center;
@@ -14,28 +14,37 @@
   color: #fff; /* Asegúrate de que el texto sea visible sobre la imagen de fondo */
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .card {
-  background-color:none; /* Fondo blanco con transparencia */
+  background-color:none; 
   padding: 2em; /* Aumenta el padding para un mejor espacio */
   margin: 1em 0; /* Aumenta el margen entre tarjetas */
-  border-radius: 10px; /* Bordes redondeados */
-  
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar las tarjetas */
   width: 90%;
   max-width: 600px; /* Asegúrate de que las tarjetas no sean demasiado anchas */
 }
 
+/* Estilos para el botón de desplazamiento hacia arriba */
+.scroll-to-top {
+  display: inline-flex;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.7em; /* Ajusta el tamaño del ícono */
+  color: #d0ff00; 
+  transition: color 0.5s, transform 0.3s, box-shadow 0.4s; /* Transición suave */
+}
+
+.scroll-to-top:hover {
+  color:  #b3a3a3; 
+  transform: scale(1.2); /* Aumenta el tamaño del ícono */
+  box-shadow: 0 0 8px #d0ff00; 
+}
+
+
 footer {
-  margin-top: 5em; /* Espacio superior para el footer */
+  margin-top: 5em; 
   padding: 2em 0;
-  color: #b3a3a3; /* Color del texto del footer */
-  background-color:none; /* Fondo oscuro con transparencia para el footer */
+  color: #b3a3a3; 
+  background-color:none; 
   width: 100%;
   text-align:center;
   font-size: 10px;
@@ -50,32 +59,16 @@ footer {
 
 /* Estilos para el ícono de LinkedIn */
 .icon {
-  font-size: 1.35em; /* Tamaño del ícono */
-  color: #d0ff00; /* Color del ícono */
+  font-size: 1.5em; /* Tamaño del ícono */
+  color: #d0ff00; 
   transition: color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transición suave para el color, el tamaño y la sombra */
-  margin-left: 5px;
+  margin-left: 9px;
   margin-top: 1px;
 }
 
 .icon:hover {
-  color: #0073b1; /* Color cuando se pasa el ratón */
-  transform: scale(1.4); /* Aumenta el tamaño del ícono */
-  box-shadow: 0 0 8px #0073b1; /* Añade un efecto de brillo */
+  color: #0073b1; 
+  transform: scale(1.4); 
+  box-shadow: 0 0 8px #0073b1; 
 }
 
-/* Estilos para el botón de desplazamiento hacia arriba */
-.scroll-to-top {
-  display: inline-flex;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1.7em; /* Ajusta el tamaño del ícono */
-  color: #d0ff00; /* Color del ícono */
-  transition: color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transición suave */
-}
-
-.scroll-to-top:hover {
-  color:  #b3a3a3; /* Color cuando se pasa el ratón */
-  transform: scale(1.2); /* Aumenta el tamaño del ícono */
-  box-shadow: 0 0 8px #d0ff00; /* Añade un efecto de brillo */
-}

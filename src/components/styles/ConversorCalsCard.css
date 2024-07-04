@@ -13,7 +13,7 @@
 .conversor-card h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
+  color: #d0ff00;
 }
 
 .input-group {
@@ -24,11 +24,14 @@
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+  
 }
-
+ .input-value{
+  width: calc(100% - 38px) !important ;
+}
 .input-group select,
 .input-group input {
-  width: calc(100% - 10px);
+  width: calc(100% - 20px);
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -38,6 +41,7 @@
 .converter_btn {
   width: 75%;
   padding: 10px;
+  margin-top: 1em;
   font-size: 18px;
   font-weight:bolder;
   color: #1a1a1a;
@@ -45,24 +49,26 @@
   border: 1px solid #eef0f1;
   border-radius: 4px;
   cursor: pointer;
+  transition: color 0.5s, transform 0.3s, box-shadow 0.4s; /* Transición suave */
 }
 
 .converter_btn:hover {
   background-color: #eef0f1;
   font-size:large;
+  transform: scale(1.1);
+  border: none;
+  box-shadow: 1px 3px 9px #d0ff00; 
 }
 
-.result {
-  text-align: center;
-  margin-top: 20px;
+.result-cals-container .result-cals-container-title {
+
+  font-size: 1.3em;
 }
 
-.result h3 {
-  margin-bottom: 10px;
-}
-
-.result p {
-  font-size: 20px;
+.result-cals-container .cals-result-value {
+  font-size: 1.4em;
   font-weight: bolder;
   color: #d0ff00;
+  margin-bottom: 0;
+ margin-top: 0;
 }

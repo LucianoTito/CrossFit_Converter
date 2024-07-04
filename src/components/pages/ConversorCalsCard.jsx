@@ -1,7 +1,7 @@
 // src/components/ConversorCard.jsx
 import  { useState } from 'react';
 import { convertCalories, convertMeters } from '../logic_conversion/conversion';
-import '../styles/ConversorCard.css';
+import '../styles/ConversorCalsCard.css';
 
 const ConversorCard = () => {
   const [inputValue, setInputValue] = useState('');
@@ -25,7 +25,7 @@ const ConversorCard = () => {
       <h2>CONVERSOR DE CALORÍAS Y METROS</h2>
 
       <div className="input-group">
-        <label>Género:</label>
+        <label>División</label>
         <select value={gender} onChange={e => setGender(e.target.value)}>
           <option value="male">Hombre</option>
           <option value="female">Mujer</option>
@@ -47,6 +47,7 @@ const ConversorCard = () => {
       <div className="input-group">
         <label>Valor de Entrada:</label>
         <input
+        className='input-value'
           type="number"
           value={inputValue}
           onChange={e => setInputValue(e.target.value)}
@@ -69,9 +70,9 @@ const ConversorCard = () => {
       <button className='converter_btn' onClick={handleConvert}>Convertir</button>
 
       {result !== null && (
-        <div className="result">
-          <h3>Resultado:</h3>
-          <p>{result}</p>
+        <div className="result-cals-container">
+          <h3 className='result-cals-container-title'>Resultado:</h3>
+          <p className='cals-result-value'>{result}</p>
         </div>
       )}
     </div>

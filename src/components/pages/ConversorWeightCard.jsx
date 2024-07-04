@@ -31,9 +31,9 @@ const ConversorWeightCard = () => {
 
   return (
     <div className="conversor-weight-card">
-      <h2>CONVERTIDOR DE PESO</h2>
-      <div className="conversion-options">
-        <label>
+      <h2 className='conversor-weight-title'>CONVERTIDOR DE PESO</h2>
+      <div className="conversion-weight-options">
+        <label className='conversion-weight-label'>
           <input
             type="radio"
             value="lbsToKg"
@@ -52,17 +52,18 @@ const ConversorWeightCard = () => {
           kilos a libras
         </label>
       </div>
-      <div className="input-section">
+     
         <input
+        className='input-weight-value'
           type="text"
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Ingrese el peso"
         />  
-      </div>
-      <div className="result-section">
-          <span className="result-label">Resultado:</span>
-          <span className="result">{outputValue}</span>
+      
+      <div className="result-weight-section">
+          <span className="result-weight-label">Resultado:</span>
+          <span className="result-weight">{outputValue}</span>
         </div>
     </div>
   );
