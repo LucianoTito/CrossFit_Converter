@@ -51,7 +51,7 @@ const ConversorWeightCard = () => {
           />
           kilos a libras
         </label>
-      </div>
+      
      
         <input
         className='input-weight-value'
@@ -60,7 +60,7 @@ const ConversorWeightCard = () => {
           onChange={handleInputChange}
           placeholder="Ingrese el peso"
         />  
-      
+      </div>
       <div className="result-weight-section">
           <span className="result-weight-label">Resultado:</span>
           <span className="result-weight">{outputValue}</span>

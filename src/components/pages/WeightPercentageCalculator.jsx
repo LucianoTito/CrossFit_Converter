@@ -31,7 +31,7 @@ const WeightPercentageCalculator = () => {
       <div className="input-group">
         <label htmlFor="weightInput">Peso (kg o lb):</label>
         <input
-          type="text"
+          type="number"
           id="weightInput"
           value={weight}
           onChange={handleWeightChange}
@@ -41,7 +41,7 @@ const WeightPercentageCalculator = () => {
       <div className="input-group">
         <label htmlFor="percentageInput">Porcentaje (%):</label>
         <input
-          type="text"
+          type="number"
           id="percentageInput"
           value={percentage}
           onChange={handlePercentageChange}
