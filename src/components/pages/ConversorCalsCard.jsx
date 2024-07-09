@@ -36,10 +36,11 @@ const ConversorCard = () => {
         <label>Actividad de Entrada:</label>
         <select value={inputActivity} onChange={e => setInputActivity(e.target.value)}>
           <option value="rowerSkiCal">Rower/Ski Erg (Cals)</option>
-          <option value="bikeErgCal">Bike Erg (Cals)</option>
-          <option value="assaultBikeCal">Assault Bike/Echo Bike (Cals)</option>
-          <option value="runMeters">Run (Meters)</option>
           <option value="rowerSkiMeters">Rower/Ski (Meters)</option>
+          <option value="assaultBikeCal">Assault Bike/Echo Bike (Cals)</option>
+          <option value="bikeErgCal">Bike Erg (Cals)</option>
+          <option value="DU_Reps">D.U (Reps)</option>
+          <option value="runMeters">Run (Meters)</option>
           <option value="bikeErgMeters">Bike Erg (Meters)</option>
         </select>
       </div>
@@ -58,11 +59,12 @@ const ConversorCard = () => {
       <div className="input-group">
         <label>Convertir a:</label>
         <select value={outputActivity} onChange={e => setOutputActivity(e.target.value)}>
-          <option value="rowerSkiCal">Rower/Ski Erg (Cals)</option>
-          <option value="bikeErgCal">Bike Erg (Cals)</option>
-          <option value="assaultBikeCal">Assault Bike/Echo Bike (Cals)</option>
           <option value="runMeters">Run (Meters)</option>
-          <option value="rowerSkiMeters">Rower/Ski (Meters)</option>
+          <option value="DU_Reps">D.U (Reps)</option>
+          <option value="rowerSkiCal">Rower/Ski Erg (Cals)</option>
+          <option value="assaultBikeCal">Assault Bike/Echo Bike (Cals)</option>
+          <option value="rowerSkiMeters">Rower/Ski (Meters)</option> 
+          <option value="bikeErgCal">Bike Erg (Cals)</option>
           <option value="bikeErgMeters">Bike Erg (Meters)</option>
         </select>
       </div>

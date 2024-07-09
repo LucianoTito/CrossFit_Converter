@@ -5,6 +5,8 @@ const conversionData = {
     rowerSkiCal: [0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 80, 100],
     // Calorías quemadas en BikeErg para hombres
     bikeErgCal: [0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 80, 100],
+    // Saltos dobles equivalentes para hombres
+    DU_Reps: [0, 22, 45, 67, 90, 112, 135, 180, 225, 270, 360, 450],
     // Calorías quemadas en Assault Bike para hombres
     assaultBikeCal: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80],
     // Distancia corrida en metros para hombres
@@ -19,6 +21,8 @@ const conversionData = {
     rowerSkiCal: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80],
     // Calorías quemadas en BikeErg para mujeres
     bikeErgCal: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80],
+    // Saltos dobles equivalentes para mujeres
+    DU_Reps: [0, 22, 45, 67, 90, 112, 135, 180, 225, 270, 360, 450],
     // Calorías quemadas en Assault Bike para mujeres
     assaultBikeCal: [0, 4, 6, 9, 12, 16, 20, 25, 32, 38, 51, 64],
     // Distancia corrida en metros para mujeres
