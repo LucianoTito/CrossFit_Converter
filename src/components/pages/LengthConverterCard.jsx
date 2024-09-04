@@ -37,8 +37,8 @@ const LengthConverterCard = () => {
       <div className="input-group">
         <label>Unidad de Entrada:</label>
         <select value={inputUnit} onChange={e => setInputUnit(e.target.value)}>
-          <option value="inches">Pulgadas</option>
-          <option value="feet">Pies</option>
+          <option value="inches">Pulgadas (Inches)</option>
+          <option value="feet">Pies (Feet)</option>
           <option value="centimeters">Centímetros</option>
           <option value="meters">Metros</option>
         </select>
@@ -60,8 +60,8 @@ const LengthConverterCard = () => {
         <select value={outputUnit} onChange={e => setOutputUnit(e.target.value)}>
           <option value="centimeters">Centímetros</option>
           <option value="meters">Metros</option>
-          <option value="inches">Pulgadas</option>
-          <option value="feet">Pies</option>
+          <option value="inches">Pulgadas (Inches) </option>
+          <option value="feet">Pies (Feet)</option>
         </select>
       </div>
 

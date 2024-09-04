@@ -1,6 +1,9 @@
 /* WeightPercentageCalculator.css */
 
 .weight-percentage-card {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;

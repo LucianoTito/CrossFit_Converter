@@ -11,7 +11,7 @@
   background: url('./assets/images/IMG_20230315_000422.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
-  color: #fff; /* Asegúrate de que el texto sea visible sobre la imagen de fondo */
+  color: #fff; 
 }
 
 .card {
