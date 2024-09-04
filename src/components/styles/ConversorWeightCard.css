@@ -19,6 +19,9 @@
   }
   
   .conversion-weight-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 15px;
   }
   .input-group-weight{
