@@ -21,11 +21,10 @@
   .conversion-weight-options {
     margin-bottom: 15px;
   }
-  .input-group{
+  .input-group-weight{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80% ;
   }
   .conversion-weight-options .conversion-weight-label {
     display: block;

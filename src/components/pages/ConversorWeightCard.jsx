@@ -54,7 +54,7 @@ const ConversorWeightCard = () => {
       
       </div>
 
-      <div className="input-group">
+      <div className="input-group-weight">
       <input
         className='input-weight-value'
           type="number"
