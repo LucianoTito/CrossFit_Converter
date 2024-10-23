@@ -4,7 +4,7 @@ import ConversorCard from './components/pages/ConversorCalsCard';
 import ConversorWeightCard from './components/pages/ConversorWeightCard';
 import WeightPercentageCalculator from './components/pages/WeightPercentageCalculator'; 
 import LengthConverterCard from './components/pages/LengthConverterCard';
-import { FaLinkedin, FaArrowUp } from 'react-icons/fa'; // Importamos los íconos de LinkedIn y Flecha hacia arriba
+import { FaLinkedin, FaArrowUp } from 'react-icons/fa'; 
 
 function App() {
   // Función para desplazarse hacia el inicio
