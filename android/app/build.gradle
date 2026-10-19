@@ -1,3 +1,19 @@
+// Datos de firma.
+//
+// Se leen de android/keystore.properties, que NO esta en el repositorio: ese
+// archivo tiene las contrasenas del keystore. El .gitignore lo bloquea junto
+// con *.jks y *.keystore.
+//
+// Si el archivo no existe, el build de release simplemente queda sin firmar
+// en lugar de fallar. Eso permite clonar el proyecto y compilar en debug sin
+// tener las claves.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+def hayFirma = keystorePropertiesFile.exists()
+if (hayFirma) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -16,8 +32,20 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            if (hayFirma) {
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig hayFirma ? signingConfigs.release : null
             // R8: elimina codigo y recursos que nadie usa, y ofusca lo que
             // queda. Reduce el tamano del paquete y hace mas trabajoso
             // descompilar la app. Las reglas de Capacitor estan en

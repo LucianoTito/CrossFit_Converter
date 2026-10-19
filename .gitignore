@@ -40,3 +40,6 @@ android/app/src/main/assets/capacitor.plugins.json
 *.keystore
 *.jks
 keystore.properties
+
+# Mensajes de commit temporales
+commit-msg.txt
