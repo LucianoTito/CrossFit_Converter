@@ -7,8 +7,6 @@
    cuatro archivos. Las hojas de componente conservan solo lo propio.
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
-
 .App {
   display: flex;
   flex-direction: column;

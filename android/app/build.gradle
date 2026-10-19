@@ -18,8 +18,18 @@ android {
     }
     buildTypes {
         release {
+            // R8: elimina codigo y recursos que nadie usa, y ofusca lo que
+            // queda. Reduce el tamano del paquete y hace mas trabajoso
+            // descompilar la app. Las reglas de Capacitor estan en
+            // proguard-rules.pro.
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // El build de desarrollo queda sin minificar para que los errores
+            // sigan siendo legibles.
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -49,6 +59,6 @@ try {
     if (servicesJSON.text) {
         apply plugin: 'com.google.gms.google-services'
     }
-} catch(Exception e) {
+} catch(Exception ignored) {
     logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
 }
