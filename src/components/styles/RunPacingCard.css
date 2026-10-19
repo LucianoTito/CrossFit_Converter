@@ -1,0 +1,61 @@
+/* Tarjeta de pacing de carrera. */
+
+.pacing-tabla {
+  inline-size: 100%;
+  margin-block-start: var(--sp-5);
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.pacing-tabla caption {
+  margin-block-end: var(--sp-2);
+  font-size: var(--txt-xs);
+  color: var(--texto-tenue);
+  text-align: start;
+}
+
+.pacing-tabla th,
+.pacing-tabla td {
+  padding: var(--sp-2) var(--sp-1);
+  border-block-end: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pacing-tabla th {
+  font-size: var(--txt-xs);
+  font-weight: 700;
+  color: var(--texto-tenue);
+  text-align: start;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pacing-tabla th[scope="row"] {
+  font-size: var(--txt-sm);
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--texto);
+}
+
+.pacing-tabla td {
+  font-size: var(--txt-lg);
+  font-weight: 700;
+  color: var(--acento);
+  text-align: end;
+}
+
+.pacing-tabla tr:last-child th,
+.pacing-tabla tr:last-child td {
+  border-block-end: none;
+}
+
+/* Resumen de ritmo equivalente, debajo del campo de entrada. */
+.pacing-equivalencia {
+  margin-block-start: var(--sp-2);
+  font-size: var(--txt-xs);
+  color: var(--texto-tenue);
+}
+
+.pacing-equivalencia strong {
+  color: var(--acento);
+  font-variant-numeric: tabular-nums;
+}
