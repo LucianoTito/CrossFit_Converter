@@ -1,23 +1,70 @@
-// src/components/ConversorCard.jsx
-import  { useState } from 'react';
+// src/components/pages/ConversorCalsCard.jsx
+import { useState } from 'react';
 import { convertCalories, convertMeters } from '../logic_conversion/conversion';
 import '../styles/ConversorCalsCard.css';
+
+// Una sola lista para los dos desplegables. Antes estaban escritas dos veces,
+// en distinto orden, lo que hacía fácil que una quedara desactualizada al
+// agregar una máquina nueva.
+const ACTIVIDADES = [
+  {
+    grupo: 'Metros',
+    opciones: [
+      { valor: 'runMeters', etiqueta: 'Run (Meters)' },
+      { valor: 'rowerSkiMeters', etiqueta: 'Rower/Ski Erg (Meters)' },
+      { valor: 'bikeErgMeters', etiqueta: 'Bike Erg (Meters)' },
+      { valor: 'assaultBikeMeters', etiqueta: 'Assault Bike (Meters)' },
+      { valor: 'echoBikeMeters', etiqueta: 'Echo Bike (Meters)' },
+    ],
+  },
+  {
+    grupo: 'Calorías',
+    opciones: [
+      { valor: 'rowerSkiCal', etiqueta: 'Rower/Ski Erg (Cals)' },
+      { valor: 'bikeErgCal', etiqueta: 'Bike Erg (Cals)' },
+      { valor: 'assaultBikeCal', etiqueta: 'Assault Bike (Cals)' },
+      { valor: 'echoBikeCal', etiqueta: 'Echo Bike (Cals)' },
+    ],
+  },
+  {
+    grupo: 'Otros',
+    opciones: [{ valor: 'DU_Reps', etiqueta: 'D.U (Reps)' }],
+  },
+];
+
+const OpcionesActividad = () =>
+  ACTIVIDADES.map(({ grupo, opciones }) => (
+    <optgroup key={grupo} label={grupo}>
+      {opciones.map(({ valor, etiqueta }) => (
+        <option key={valor} value={valor}>
+          {etiqueta}
+        </option>
+      ))}
+    </optgroup>
+  ));
 
 const ConversorCard = () => {
   const [inputValue, setInputValue] = useState('');
   const [gender, setGender] = useState('male');
-  const [inputActivity, setInputActivity] = useState('rowerSkiCal');
-  const [outputActivity, setOutputActivity] = useState('bikeErgCal');
+  const [inputActivity, setInputActivity] = useState('runMeters');
+  const [outputActivity, setOutputActivity] = useState('bikeErgMeters');
   const [result, setResult] = useState(null);
 
   const handleConvert = () => {
-    let convertedValue;
-    if (inputActivity.includes('Cal')) {
-      convertedValue = convertCalories(inputActivity, parseFloat(inputValue), gender, outputActivity);
-    } else {
-      convertedValue = convertMeters(inputActivity, parseFloat(inputValue), gender, outputActivity);
+    const valor = parseFloat(inputValue);
+
+    // Sin esta guarda, un campo vacío o un texto inválido producen NaN y lo
+    // muestran en pantalla como si fuera un resultado.
+    if (!Number.isFinite(valor) || valor < 0) {
+      setResult(null);
+      return;
     }
-    setResult(convertedValue);
+
+    const convertir = inputActivity.includes('Cal')
+      ? convertCalories
+      : convertMeters;
+
+    setResult(convertir(inputActivity, valor, gender, outputActivity));
   };
 
   return (
@@ -34,22 +81,20 @@ const ConversorCard = () => {
 
       <div className="input-group">
         <label>Actividad de Entrada:</label>
-        <select value={inputActivity} onChange={e => setInputActivity(e.target.value)}>
-          <option value="rowerSkiCal">Rower/Ski Erg (Cals)</option>
-          <option value="rowerSkiMeters">Rower/Ski (Meters)</option>
-          <option value="assaultBikeCal">Assault Bike/Echo Bike (Cals)</option>
-          <option value="bikeErgCal">Bike Erg (Cals)</option>
-          <option value="DU_Reps">D.U (Reps)</option>
-          <option value="runMeters">Run (Meters)</option>
-          <option value="bikeErgMeters">Bike Erg (Meters)</option>
+        <select
+          value={inputActivity}
+          onChange={e => setInputActivity(e.target.value)}
+        >
+          <OpcionesActividad />
         </select>
       </div>
 
       <div className="input-group">
         <label>Valor de Entrada:</label>
         <input
-        className='input-value'
+          className="input-value"
           type="number"
+          min="0"
           value={inputValue}
           onChange={e => setInputValue(e.target.value)}
           placeholder="Ingrese el valor"
@@ -58,23 +103,22 @@ const ConversorCard = () => {
 
       <div className="input-group">
         <label>Convertir a:</label>
-        <select value={outputActivity} onChange={e => setOutputActivity(e.target.value)}>
-          <option value="runMeters">Run (Meters)</option>
-          <option value="DU_Reps">D.U (Reps)</option>
-          <option value="rowerSkiCal">Rower/Ski Erg (Cals)</option>
-          <option value="assaultBikeCal">Assault Bike/Echo Bike (Cals)</option>
-          <option value="rowerSkiMeters">Rower/Ski (Meters)</option> 
-          <option value="bikeErgCal">Bike Erg (Cals)</option>
-          <option value="bikeErgMeters">Bike Erg (Meters)</option>
+        <select
+          value={outputActivity}
+          onChange={e => setOutputActivity(e.target.value)}
+        >
+          <OpcionesActividad />
         </select>
       </div>
 
-      <button className='converter_btn' onClick={handleConvert}>Convertir</button>
+      <button className="converter_btn" onClick={handleConvert}>
+        Convertir
+      </button>
 
       {result !== null && (
         <div className="result-cals-container">
-          <h3 className='result-cals-container-title'>Resultado:</h3>
-          <p className='cals-result-value'>{result}</p>
+          <h3 className="result-cals-container-title">Resultado:</h3>
+          <p className="cals-result-value">{result}</p>
         </div>
       )}
     </div>
