@@ -1,74 +1,65 @@
-/* src/components/ConversorCard.css */
+/* Conversor de calorías y metros.
+   El estilo de tarjeta, campos, botón y resultado vive en App.css (.card,
+   .input-group, .converter_btn, .result-box). Acá solo lo específico. */
 
-.conversor-card {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #e0fd53;
-  border-radius: 8px;
-  background-color: #1a1a1a;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.conversor-card__fila-intercambio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: calc(var(--sp-2) * -1) var(--sp-3);
 }
 
-.conversor-card h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #e0fd53;
+/* Botón de invertir origen y destino. */
+.btn-intercambio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  font-size: 1.25em;
+  color: var(--acento);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  transition: transform 0.25s ease, background-color 0.2s ease;
 }
 
-.input-group {
-  margin-bottom: 15px;
+@media (hover: hover) {
+  .btn-intercambio:hover {
+    background-color: var(--acento-tenue);
+  }
 }
 
-.input-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  
-}
- .input-value{
-  width: calc(100% - 38px) !important ;
-}
-.input-group select,
-.input-group input {
-  width: calc(100% - 20px);
-  padding: 8px;
-  font-size: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.btn-intercambio:active {
+  transform: rotate(180deg) scale(0.92);
 }
 
-.converter_btn {
-  width: 75%;
-  padding: 10px;
-  margin-top: 1em;
-  font-size: 18px;
-  font-weight:bolder;
-  color: #1a1a1a;
-  background-color: #e0fd53;
-  border: 1px solid #eef0f1;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: color 0.5s, transform 0.3s, box-shadow 0.4s; /* Transición suave */
+/* Botón de copiar el resultado. */
+.btn-copiar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-block-size: 36px;
+  margin-block-start: var(--sp-2);
+  padding: var(--sp-1) var(--sp-4);
+  font-size: var(--txt-xs);
+  font-weight: 700;
+  color: var(--texto-tenue);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radio-sm);
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.converter_btn:hover {
-  background-color: #eef0f1;
-  font-size:large;
-  transform: scale(1.1);
-  border: none;
-  box-shadow: 1px 3px 9px #e0fd53; 
+@media (hover: hover) {
+  .btn-copiar:hover {
+    color: var(--acento);
+    border-color: var(--borde);
+  }
 }
 
-.result-cals-container .result-cals-container-title {
-
-  font-size: 1.3em;
-}
-
-.result-cals-container .cals-result-value {
-  font-size: 1.4em;
-  font-weight: bolder;
-  color: #e0fd53;
-  margin-bottom: 0;
- margin-top: 0;
+.btn-copiar[data-copiado="true"] {
+  color: var(--acento);
+  border-color: var(--borde);
 }

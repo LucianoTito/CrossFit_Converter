@@ -22,3 +22,24 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Capacitor / Android
+# El proyecto android/ SI se versiona: lleva configuracion propia (iconos,
+# permisos, AndroidManifest) que es parte del proyecto. Lo que se ignora es
+# lo que Gradle genera o lo que es local de cada maquina.
+android/app/build/
+android/build/
+android/.gradle/
+android/captures/
+android/local.properties
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+
+# Claves de firma: NUNCA al repositorio.
+*.keystore
+*.jks
+keystore.properties
+
+# Mensajes de commit temporales
+commit-msg.txt

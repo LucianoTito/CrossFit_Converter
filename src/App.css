@@ -1,74 +1,290 @@
-/* src/App.css */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
-#root {
+/* ============================================================
+   Layout de la aplicación y patrón de tarjeta compartido.
+
+   El estilo visual de la tarjeta vive acá, en .card, y no repetido en cada
+   hoja de componente. Antes las cuatro tarjetas declaraban por su cuenta el
+   mismo borde, radio, fondo y max-width, y cambiar uno obligaba a tocar
+   cuatro archivos. Las hojas de componente conservan solo lo propio.
+   ============================================================ */
+
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1280px;
-  padding: 2rem;
-  font-family: "Roboto Mono", monospace;
+  gap: var(--sp-5);
+
+  /* Un solo nivel de padding. Antes body y #root ponían 2rem cada uno: 128px
+     de margen lateral en un teléfono de 400px, casi un tercio del ancho. */
+  padding-block: calc(var(--safe-arriba) + var(--sp-6))
+    calc(var(--safe-abajo) + var(--sp-6));
+  padding-inline: max(var(--sp-4), var(--safe-izq))
+    max(var(--sp-4), var(--safe-der));
+
+  inline-size: 100%;
+  max-inline-size: 640px;
+  margin-inline: auto;
+  min-block-size: 100dvh;
   text-align: center;
-  background: url('./assets/images/IMG_20230315_000422.jpg') no-repeat center center fixed;
-  background-size: cover;
-  min-height: 100vh;
-  color: #fff; 
 }
+
+/* ============================================================
+   Tarjeta
+   ============================================================ */
 
 .card {
-  background-color:none; 
-  padding: 2em; /* Aumenta el padding para un mejor espacio */
-  margin: 1em 0; /* Aumenta el margen entre tarjetas */
-  width: 90%;
-  max-width: 600px; /* Asegúrate de que las tarjetas no sean demasiado anchas */
+  inline-size: 100%;
+  padding: var(--sp-5);
+  background-color: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  text-align: start;
 }
 
-/* Estilos para el botón de desplazamiento hacia arriba */
-.scroll-to-top {
-  display: inline-flex;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1.7em; /* Ajusta el tamaño del ícono */
-  color: #d0ff00; 
-  transition: color 0.5s, transform 0.3s, box-shadow 0.4s; /* Transición suave */
+.card h2 {
+  margin-block-end: var(--sp-5);
+  font-size: var(--txt-xl);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--acento);
+  text-align: center;
+  letter-spacing: 0.02em;
 }
 
-.scroll-to-top:hover {
-  color:  #b3a3a3; 
-  transform: scale(1.2); /* Aumenta el tamaño del ícono */
-  box-shadow: 0 0 8px #d0ff00; 
+/* ============================================================
+   Grupos de campos
+   ============================================================ */
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-block-end: var(--sp-4);
 }
 
+.input-group label {
+  font-size: var(--txt-sm);
+  font-weight: 700;
+  color: var(--texto-tenue);
+  text-align: start;
+}
 
-footer {
-  margin-top: 5em; 
-  padding: 2em 0;
-  color: #b3a3a3; 
-  background-color:none; 
-  width: 100%;
-  text-align:center;
-  font-size: 10px;
+/* ============================================================
+   Botones
+   ============================================================ */
+
+.converter_btn {
+  inline-size: 100%;
+  margin-block-start: var(--sp-2);
+  padding: var(--sp-3) var(--sp-5);
+  font-size: var(--txt-base);
+  font-weight: 700;
+  color: var(--texto-sobre-acento);
+  background-color: var(--acento);
+  border-radius: var(--radio-sm);
+  transition: background-color 0.18s ease, transform 0.12s ease;
+}
+
+/* Los efectos de hover solo donde existe un puntero de verdad. En pantallas
+   táctiles el navegador simula el hover y el estilo queda "pegado" después
+   de tocar, hasta que tocás en otro lado. */
+@media (hover: hover) {
+  .converter_btn:hover {
+    background-color: #eaff7a;
+  }
+}
+
+.converter_btn:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================
+   Resultado
+   ============================================================ */
+
+.result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-block-start: var(--sp-5);
+  padding: var(--sp-4);
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radio-sm);
+}
+
+.result-box__label {
+  font-size: var(--txt-sm);
+  font-weight: 700;
+  color: var(--texto-tenue);
+}
+
+.result-box__value {
+  font-size: var(--txt-2xl);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--acento);
+  /* Tabular: los dígitos ocupan lo mismo y el número no "salta" al cambiar. */
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.result-box__nota {
+  font-size: var(--txt-xs);
+  color: var(--texto-tenue);
+}
+
+/* ============================================================
+   Pie y acciones
+   ============================================================ */
+
+.app-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-block-start: var(--sp-6);
+  font-size: var(--txt-xs);
+  color: var(--texto-tenue);
+}
+
+.app-footer__creditos {
   display: flex;
   align-items: center;
+  gap: var(--sp-2);
+}
+
+.app-footer__link {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  font-size: 1.4em;
+  color: var(--acento);
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.read-the-docs {
-  color: #888;
+@media (hover: hover) {
+  .app-footer__link:hover {
+    color: var(--acento-fuerte);
+    background-color: var(--acento-tenue);
+  }
 }
 
-/* Estilos para el ícono de LinkedIn */
-.icon {
-  font-size: 1.5em; /* Tamaño del ícono */
-  color: #d0ff00; 
-  transition: color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transición suave para el color, el tamaño y la sombra */
-  margin-left: 9px;
-  margin-top: 1px;
+.app-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-block-start: var(--sp-5);
 }
 
-.icon:hover {
-  color: #0073b1; 
-  transform: scale(1.4); 
-  box-shadow: 0 0 8px #0073b1; 
+.btn-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-5);
+  font-size: var(--txt-sm);
+  font-weight: 700;
+  color: var(--texto-tenue);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radio-sm);
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
+@media (hover: hover) {
+  .btn-secundario:hover {
+    color: var(--acento);
+    border-color: var(--borde);
+  }
+}
+
+.btn-secundario:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================
+   Volver arriba
+   ============================================================ */
+
+.scroll-to-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  margin-block-start: var(--sp-5);
+  font-size: 1.5em;
+  color: var(--acento-fuerte);
+  background-color: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--borde);
+  border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+@media (hover: hover) {
+  .scroll-to-top:hover {
+    background-color: var(--acento-tenue);
+  }
+}
+
+.scroll-to-top:active {
+  transform: scale(0.94);
+}
+
+/* ============================================================
+   Aviso flotante (salir de la app)
+   ============================================================ */
+
+.toast {
+  position: fixed;
+  /* Por encima de la barra de gestos en teléfonos sin botones físicos. */
+  inset-block-end: calc(var(--safe-abajo) + var(--sp-6));
+  inset-inline: var(--sp-5);
+  z-index: 100;
+
+  max-inline-size: 420px;
+  margin-inline: auto;
+  padding: var(--sp-3) var(--sp-5);
+  font-size: var(--txt-sm);
+  text-align: center;
+  color: var(--texto);
+  background-color: rgba(26, 26, 26, 0.96);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  animation: toast-entra 0.2s ease;
+}
+
+@keyframes toast-entra {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* ============================================================
+   Pantallas anchas
+
+   Único breakpoint del archivo. El resto del layout se adapta solo con
+   clamp() y porcentajes, que es lo que evita terminar con una cascada de
+   media queries peleándose entre sí. Acá hace falta porque el cambio es de
+   forma, no de tamaño: el botón deja de ocupar todo el ancho.
+   ============================================================ */
+
+@media (min-width: 560px) {
+  .card {
+    padding: var(--sp-6);
+  }
+
+  .converter_btn {
+    inline-size: auto;
+    min-inline-size: 200px;
+    margin-inline: auto;
+    display: block;
+  }
+}

@@ -1,57 +1,81 @@
-import { useState } from 'react';
-import '../styles/WeightPercentageCalculator.css'; // Archivo CSS para los estilos
+// src/components/pages/WeightPercentageCalculator.jsx
+import { useMemo, useState } from 'react';
+import { FaCheck, FaRegCopy } from 'react-icons/fa6';
+import { useCopiar } from '../../hooks/usePreferencia';
+import '../styles/WeightPercentageCalculator.css';
+
+// Los porcentajes que más aparecen al escalar cargas sobre un 1RM.
+const FRECUENTES = [50, 60, 65, 70, 75, 80, 85, 90, 95];
 
 const WeightPercentageCalculator = () => {
   const [weight, setWeight] = useState('');
   const [percentage, setPercentage] = useState('');
-  const [result, setResult] = useState('');
+  const [copiado, copiar] = useCopiar();
 
-  const handleWeightChange = (e) => {
-    setWeight(e.target.value);
-    calculateResult(e.target.value, percentage);
-  };
-
-  const handlePercentageChange = (e) => {
-    setPercentage(e.target.value);
-    calculateResult(weight, e.target.value);
-  };
-
-  const calculateResult = (weight, percentage) => {
-    if (!isNaN(weight) && !isNaN(percentage)) {
-      const calculatedResult = (weight * percentage) / 100;
-      setResult(calculatedResult.toFixed(1)); // Redondeamos a dos decimales
-    } else {
-      setResult('');
-    }
-  };
+  const resultado = useMemo(() => {
+    const peso = parseFloat(weight);
+    const pct = parseFloat(percentage);
+    if (!Number.isFinite(peso) || !Number.isFinite(pct)) return null;
+    return ((peso * pct) / 100).toFixed(1).replace(/\.0$/, '');
+  }, [weight, percentage]);
 
   return (
     <div className="weight-percentage-card">
-      <h2 className='weight-percentage-card-title'>CALCULADORA DE PORCENTAJE DE PESO</h2>
+      <h2>CALCULADORA DE PORCENTAJE</h2>
+
       <div className="input-group">
-        <label htmlFor="weightInput">Peso (kg o lb):</label>
+        <label htmlFor="pct-peso">Peso de referencia (kg o lb)</label>
         <input
+          id="pct-peso"
           type="number"
-          id="weightInput"
+          inputMode="decimal"
+          min="0"
           value={weight}
-          onChange={handleWeightChange}
-          placeholder="Ingrese el peso"
+          onChange={e => setWeight(e.target.value)}
+          placeholder="Por ejemplo, su 1RM"
         />
       </div>
+
       <div className="input-group">
-        <label htmlFor="percentageInput">Porcentaje (%):</label>
+        <label htmlFor="pct-valor">Porcentaje (%)</label>
         <input
+          id="pct-valor"
           type="number"
-          id="percentageInput"
+          inputMode="decimal"
+          min="0"
           value={percentage}
-          onChange={handlePercentageChange}
+          onChange={e => setPercentage(e.target.value)}
           placeholder="Ingrese el porcentaje"
         />
+
+        <div className="porcentajes-rapidos">
+          {FRECUENTES.map(p => (
+            <button
+              key={p}
+              type="button"
+              className="porcentajes-rapidos__btn"
+              aria-pressed={String(p) === percentage}
+              onClick={() => setPercentage(String(p))}
+            >
+              {p}%
+            </button>
+          ))}
+        </div>
       </div>
-      {result && (
-        <div className="result-percentage">
-          <h3  className='result-percentage-title'>Resultado:</h3>
-          <p className='result-percentage-value'>{result} kg</p>
+
+      {resultado !== null && (
+        <div className="result-box" aria-live="polite">
+          <span className="result-box__label">Resultado</span>
+          <span className="result-box__value">{resultado}</span>
+          <button
+            type="button"
+            className="btn-copiar"
+            data-copiado={copiado}
+            onClick={() => copiar(resultado)}
+          >
+            {copiado ? <FaCheck /> : <FaRegCopy />}
+            {copiado ? 'Copiado' : 'Copiar'}
+          </button>
         </div>
       )}
     </div>
