@@ -1,0 +1,14 @@
+# Configuracion de build de Netlify, versionada junto con el codigo.
+# Lo que se define aca tiene prioridad sobre lo cargado en el panel web.
+
+[build]
+  # Los tests corren antes del build: si alguna equivalencia se rompe,
+  # el deploy falla y la version anterior sigue publicada.
+  command = "npm test && npm run build"
+  publish = "dist"
+
+[build.environment]
+  # vite-plugin-pwa 2 y Workbox 7 necesitan Node 20.19 o superior, y la CLI
+  # de Capacitor 8 pide 22. Sin fijarla, Netlify usa la version por defecto
+  # del sitio (18), y el build falla al generar el service worker.
+  NODE_VERSION = "22"
