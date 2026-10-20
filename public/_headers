@@ -1,0 +1,24 @@
+# Cabeceras HTTP para Netlify.
+
+# El service worker y el manifiesto nunca se cachean en el navegador: si se
+# cachearan, un deploy nuevo podria quedar invisible porque el navegador
+# seguiria usando el service worker viejo para decidir que version mostrar.
+/sw.js
+  Cache-Control: no-cache
+/manifest.webmanifest
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+
+# Los archivos de assets/ llevan un hash en el nombre que cambia con cada
+# build (index-B29NNH0t.js). Un mismo nombre siempre tiene el mismo
+# contenido, asi que se pueden cachear para siempre sin riesgo.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cabeceras de seguridad para todo el sitio.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
