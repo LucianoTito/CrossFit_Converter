@@ -56,13 +56,13 @@ export function useCopiar(milisegundos = 1800) {
 
   const copiar = useCallback(async texto => {
     const valor = String(texto ?? '');
-    if (valor === '') return;
+    if (valor === '') return false;
 
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(valor);
         setCopiado(true);
-        return;
+        return true;
       }
     } catch {
       // Sigue al método de respaldo.
@@ -76,11 +76,18 @@ export function useCopiar(milisegundos = 1800) {
       area.style.opacity = '0';
       document.body.appendChild(area);
       area.select();
-      document.execCommand('copy');
+
+      // execCommand devuelve false cuando no pudo copiar, SIN lanzar
+      // excepción. Ignorar ese valor hacía que la app mostrara "Copiado"
+      // aunque el portapapeles hubiera quedado intacto.
+      const exito = document.execCommand('copy');
       document.body.removeChild(area);
-      setCopiado(true);
+
+      if (exito) setCopiado(true);
+      return exito;
     } catch {
       // Sin portapapeles disponible: no se avisa nada para no mentir.
+      return false;
     }
   }, []);
 

@@ -9,6 +9,8 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   DISTANCIAS_ESTANDAR,
+  RITMO_MAX,
+  RITMO_MIN,
   formatearTiempo,
   parsearTiempo,
   ritmoDesdeTiempo,
@@ -155,6 +157,39 @@ describe('Pacing: interpretación de lo que escribe el usuario', () => {
   test('formatear y parsear son inversos', () => {
     for (const s of [0, 45, 60, 125, 3600, 5025]) {
       assert.equal(parsearTiempo(formatearTiempo(s)), s);
+    }
+  });
+});
+
+describe('Pacing: conversión entre unidades de ritmo', () => {
+  // Regresión: la tarjeta arrancaba con "30" sin importar la unidad elegida.
+  // En modo kilómetro eso se leía como 30 segundos por km, un ritmo imposible
+  // que dejaba la tarjeta sin resultados. Y como la unidad se persiste, al
+  // reabrir la app el estado quedaba roto hasta corregir el número a mano.
+  const RITMOS_POR_DEFECTO = { '100m': '30', km: '5:00' };
+
+  test('los valores por defecto de cada unidad son el mismo ritmo', () => {
+    const porCien = parsearTiempo(RITMOS_POR_DEFECTO['100m']);
+    const porKm = parsearTiempo(RITMOS_POR_DEFECTO.km);
+    assert.equal(ritmoPorKm(porCien), porKm);
+  });
+
+  test('los valores por defecto caen dentro del rango admitido', () => {
+    for (const [unidad, texto] of Object.entries(RITMOS_POR_DEFECTO)) {
+      const segundos = parsearTiempo(texto);
+      const por100m = unidad === 'km' ? segundos / 10 : segundos;
+      assert.ok(
+        por100m >= RITMO_MIN && por100m <= RITMO_MAX,
+        `el valor por defecto de ${unidad} (${texto}) queda fuera de rango`,
+      );
+    }
+  });
+
+  test('convertir de una unidad a otra y volver conserva el ritmo', () => {
+    for (const por100m of [15, 22, 30, 45, 60]) {
+      const aKm = por100m * 10;
+      assert.equal(aKm / 10, por100m);
+      assert.equal(ritmoPorKm(por100m), aKm);
     }
   });
 });

@@ -12,12 +12,41 @@ import {
 import { usePreferencia, useCopiar } from '../../hooks/usePreferencia';
 import '../styles/RunPacingCard.css';
 
+// Un mismo ritmo se escribe distinto según la unidad: 30 segundos por 100m
+// son 5:00 por kilómetro. El valor por defecto y el formato del campo tienen
+// que seguir al modo, o el número queda interpretado en la unidad equivocada.
+const POR_DEFECTO = { '100m': '30', km: '5:00' };
+
+const formatearSegunModo = (segundos, modo) =>
+  modo === 'km' ? formatearTiempo(segundos) : String(Math.round(segundos));
+
 const RunPacingCard = () => {
+  // El modo se declara primero: el valor inicial del campo depende de él.
+  // Como se persiste, al reabrir la app puede venir en 'km', y arrancar con
+  // "30" ahí significaría 30 segundos por kilómetro: un ritmo imposible que
+  // dejaba la tarjeta sin resultados hasta cambiar el número a mano.
+  const [modo, setModo] = usePreferencia('pacing:modo', '100m');
+
   // Se guarda como texto para no pelear con el campo mientras se escribe:
   // "1:" es un estado intermedio válido que como número no existe.
-  const [ritmoTexto, setRitmoTexto] = useState('30');
-  const [modo, setModo] = usePreferencia('pacing:modo', '100m');
+  const [ritmoTexto, setRitmoTexto] = useState(
+    () => POR_DEFECTO[modo] ?? POR_DEFECTO['100m'],
+  );
   const [copiado, copiar] = useCopiar();
+
+  // Al cambiar de unidad se convierte el valor en pantalla en lugar de
+  // dejarlo como está: el ritmo que el usuario eligió no cambió, solo cambia
+  // cómo se expresa.
+  const cambiarModo = nuevoModo => {
+    const segundos = parsearTiempo(ritmoTexto);
+    if (Number.isFinite(segundos) && segundos > 0) {
+      const convertido = nuevoModo === 'km' ? segundos * 10 : segundos / 10;
+      setRitmoTexto(formatearSegunModo(convertido, nuevoModo));
+    } else {
+      setRitmoTexto(POR_DEFECTO[nuevoModo] ?? POR_DEFECTO['100m']);
+    }
+    setModo(nuevoModo);
+  };
 
   const ritmoPor100m = useMemo(() => {
     const segundos = parsearTiempo(ritmoTexto);
@@ -53,7 +82,7 @@ const RunPacingCard = () => {
         <select
           id="pacing-modo"
           value={modo}
-          onChange={e => setModo(e.target.value)}
+          onChange={e => cambiarModo(e.target.value)}
         >
           <option value="100m">100 metros</option>
           <option value="km">Kilómetro</option>
